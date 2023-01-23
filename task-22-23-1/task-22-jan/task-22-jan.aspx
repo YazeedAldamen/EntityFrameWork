@@ -70,22 +70,23 @@
   </ul>
 </div>
             <br />
-            <asp:GridView ID="GridView1" runat="server">
-                <Columns>
-                    <asp:TemplateField HeaderText="Photo">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Photo") %>' style="width:75px; height:75px"/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
-            
             <asp:TextBox ID="search" runat="server" ValidationGroup="g2"/>
             <asp:Button Text="Search" runat="server" OnClick="Unnamed2_Click" ValidationGroup="g2"/>
             <asp:Label ID="lblTable" runat="server" />
+            <br />
+            <br />
+            <asp:GridView ID="GridView1" runat="server" CssClass="table  table-striped table-dark" OnRowDataBound="GridView1_RowDataBound" Style="width:100%; "  CellPadding="3" CellSpacing="3">
+                <Columns>
+                    <asp:HyperLinkField DataNavigateUrlFields="CustomerID" DataNavigateUrlFormatString="edit.aspx?id={0}" HeaderText="Edit" Text="Edit">
+                    <ItemStyle ForeColor="White" />
+                    </asp:HyperLinkField>
+                    <asp:HyperLinkField DataNavigateUrlFields="CustomerID" DataNavigateUrlFormatString="delete.aspx?id={0}" HeaderText="Delete" Text="Delete" />
+                </Columns>
+               
+                
+            </asp:GridView>
+              
+            
            
         </div>
     </form>
